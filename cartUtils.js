@@ -8,9 +8,8 @@ export const GET_ITEM_QUANTIY = gql`
 
 
 export function addItemToCart(client,change=1){
-
-    client.writeQuery({query,})
-    // client.writeData({ data: { visibilityFilter: filter } })
+    let {quantity} = client.cache.readQuery({query:GET_ITEM_QUANTIY});
+    client.writeData({ data: { quantity: quantity+change } })
 }
 
 
